@@ -69,40 +69,7 @@
 
     <p>In a feed, wide gallery, massive table, or any area where the content is larger than its constraining wrapper, how do we indicate that there is more content to scroll down to, given that we can't always rely on the scrollbar being visible, especially on mobile?</p>
 
-    <p>All you need to do is add the separate script and stylesheet to your project (CSS and SCSS are available), and do what you require, according to the instructions below.</p> 
-
-    <h2>Usage</h2>
-
-    <ol>
-      <li>
-        You need an outer and inner block element in your HTML, with classes as follows:
-<pre><code>&lt;!-- If you want a horizontal overflow --&gt;
-
-&lt;div class="scrollbox scrollbox-horizontal"&gt;
-  &lt;div class="scrollbox-inner"&gt;
-    Your (potentially) scrollable content
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- If you want a vertical overflow --&gt;
-  
-&lt;div class="scrollbox scrollbox-vertical"&gt;
-  &lt;div class="scrollbox-inner"&gt;
-    Your (potentially) scrollable content
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-      </li>
-      <li>
-        When setting up, <em>you must decide</em> whether your (potentially) overflowing <code>.scrollbox-inner</code> will overflow horizontally or vertically. Specify your choice on the outer wrapper, using either <code>scrollbox scrollbox-horizontal</code> or <code>scrollbox scrollbox-vertical</code> (not both).
-      </li>
-      <li>
-        The <code>scrollbox.js</code> detects only whether your inner content is at the start or the end of its overflow scroll. Then it adds or removes CSS classes to the outer <code>scrollbox</code>.
-      </li>
-      <li>
-        Then <code>scrollbox.css</code> accordingly styles <code>::before</code> or <code>::after</code> pseudo elements with small <em>CSS gradients</em> mimicing shadows. (It does not use inset box shadows, because when I tried these, they don't work well in Safari.)
-      </li>
-    </ol>
+    <p>All you need to do is add the separate script and stylesheet to your project (CSS and SCSS are available), and do what you require, according to the usage instructions below the demo.</p>
 
     <h2>Demo</h2>
 
@@ -147,6 +114,39 @@
         </ul>
       </div>
     </div>
+
+    <h2>Usage</h2>
+
+    <ol>
+      <li>
+        You need an outer and inner block element in your HTML, with classes as follows:
+<pre><code>&lt;!-- If you want a horizontal overflow --&gt;
+
+&lt;div class="scrollbox scrollbox-horizontal"&gt;
+  &lt;div class="scrollbox-inner"&gt;
+    Your (potentially) scrollable content
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- If you want a vertical overflow --&gt;
+  
+&lt;div class="scrollbox scrollbox-vertical"&gt;
+  &lt;div class="scrollbox-inner"&gt;
+    Your (potentially) scrollable content
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </li>
+      <li>
+        When setting up, <em>you must decide</em> whether your (potentially) overflowing <code>.scrollbox-inner</code> will overflow horizontally or vertically. Specify your choice on the outer wrapper, using either <code>scrollbox scrollbox-horizontal</code> or <code>scrollbox scrollbox-vertical</code> (not both).
+      </li>
+      <li>
+        The <code>scrollbox.js</code> detects only whether your inner content is at the start or the end of its overflow scroll. Then it adds or removes CSS classes to the outer <code>scrollbox</code>.
+      </li>
+      <li>
+        Then <code>scrollbox.css</code> accordingly styles <code>::before</code> or <code>::after</code> pseudo elements with small <em>CSS gradients</em> mimicing shadows. (It does not use inset box shadows, because when I tried these, they don't work well in Safari.)
+      </li>
+    </ol>
 
     <p>
       <em>That’s all there is to it.</em>
