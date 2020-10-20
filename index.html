@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scroll Shadows</title>
+  <link rel="stylesheet" href="scrollbox.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: sans-serif;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+      box-sizing:border-box;
+      overflow:auto;
+    }
+
+    ul {
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .scrollbox {
+      height: 240px;
+    }
+    .scrollbox-horizontal ul {
+      display: flex;
+      flex-grow: auto;
+    }
+
+    .scrollbox-horizontal li {
+      min-height: 214px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scrollbox li {
+      min-width: 150px;
+      margin: .25rem;
+      border: 1px solid gainsboro;
+      padding: .5rem;
+      border-radius: .5rem
+    }
+    pre, code {
+      border-radius: .25rem;
+      padding: .125rem .25rem;
+      font-size: 1.25em;
+      background: gainsboro;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <h1>Overflow scroll shadows</h1>
+
+    <p><em>For indicating scrollable content.</em></p>
+
+    <p>Based on an original idea at <a href="https://css-tricks.com/thats-just-how-i-scroll/" target="_blank">https://css-tricks.com/thats-just-how-i-scroll/</p></a></p>
+
+    <p>In a feed, wide gallery, massive table, or any area where the content is larger than its constraining wrapper, how do we indicate that there is more content to scroll down to, given that we can't always rely on the scrollbar being visible, especially on mobile?</p>
+
+    <p>All you need to do is add the separate script and stylesheet to your project (CSS and SCSS are available), and do what you require, according to the instructions below.</p> 
+
+    <h2>Usage</h2>
+
+    <ol>
+      <li>
+        You need an outer and inner block element in your HTML, with classes as follows:
+<pre><code>&lt;!-- If you want a horizontal overflow --&gt;
+
+&lt;div class="scrollbox scrollbox-horizontal"&gt;
+  &lt;div class="scrollbox-inner"&gt;
+    Your (potentially) scrollable content
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- If you want a vertical overflow --&gt;
+  
+&lt;div class="scrollbox scrollbox-vertical"&gt;
+  &lt;div class="scrollbox-inner"&gt;
+    Your (potentially) scrollable content
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </li>
+      <li>
+        When setting up, <em>you must decide</em> whether your (potentially) overflowing <code>.scrollbox-inner</code> will overflow horizontally or vertically. Specify your choice on the outer wrapper, using either <code>scrollbox scrollbox-horizontal</code> or <code>scrollbox scrollbox-vertical</code> (not both).
+      </li>
+      <li>
+        The <code>scrollbox.js</code> detects only whether your inner content is at the start or the end of its overflow scroll. Then it adds or removes CSS classes to the outer <code>scrollbox</code>.
+      </li>
+      <li>
+        Then <code>scrollbox.css</code> accordingly styles <code>::before</code> or <code>::after</code> pseudo elements with small <em>CSS gradients</em> mimicing shadows. (It does not use inset box shadows, because when I tried these, they don't work well in Safari.)
+      </li>
+    </ol>
+
+    <h2>Demo</h2>
+
+    <p>
+      With <code>scrollbox scrollbox-horizontal</code>:
+    </p>
+
+    <div class="scrollbox scrollbox-horizontal">
+      <div class="scrollbox-inner">
+        <ul class="list row">
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+          <li>Four</li>
+          <li>Five</li>
+          <li>Six</li>
+          <li>Seven</li>
+          <li>Eight</li>
+          <li>Nine</li>
+          <li>Ten</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>
+      With <code>scrollbox scrollbox-vertical</code>:
+    </p>
+
+    <div class="scrollbox scrollbox-vertical">
+      <div class="scrollbox-inner">
+        <ul>
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+          <li>Four</li>
+          <li>Five</li>
+          <li>Six</li>
+          <li>Seven</li>
+          <li>Eight</li>
+          <li>Nine</li>
+          <li>Ten</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>
+      <em>That’s all there is to it.</em>
+    </p>
+  </div>
+
+  <script src="scrollbox.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+.scrollbox {
+  overflow: hidden;
+  position: relative;
+}
+.scrollbox-inner {
+  height: 100%;
+  overflow: scroll;
+}
+
+[class*=scrollbox-shadow] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.show-shadow-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 0.5em;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
+  pointer-events: none;
+}
+
+.show-shadow-left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.5em;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+}
+
+.show-shadow-right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.5em;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
+  pointer-events: none;
+}
+
+.show-shadow-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0.5em;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+}
